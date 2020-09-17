@@ -1,0 +1,26 @@
+<div class="card bg-light">
+  <h3 class="text-primary text-left">
+    {{ contact.name }}
+    <span
+      class="badge"
+      [ngStyle]="{ float: 'right' }"
+      [ngClass]="{
+        'badge-success': contact.type === 'professional',
+        'badge-primary': contact.type !== 'professional'
+      }"
+      >{{ makeUpperCase(contact.type) }}</span
+    >
+  </h3>
+  <ul class="list">
+    <li *ngIf="contact.email">
+      <i class="fas fa-envelope-open"></i> {{ contact.email }}
+    </li>
+    <li *ngIf="contact.phone">
+      <i class="fas fa-phone"></i> {{ contact.phone }}
+    </li>
+  </ul>
+  <p>
+    <button class="btn btn-dark btn-sm">Edit</button>
+    <button class="btn btn-danger btn-sm">Delete</button>
+  </p>
+</div>
