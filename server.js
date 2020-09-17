@@ -8,13 +8,16 @@ app.get('/', (req, res) =>
   res.json({ msg: 'Welcome to the ContactsKeeper API...' })
 );
 
+// Initialize middleware
+app.use(express.json({ extended: false }));
+
 // Initialize Database
 connectDB();
 
 // Define Routes
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
-app.use('./api/contacts', require('./routes/api/contacts'));
+app.use('/api/contacts', require('./routes/api/contacts'));
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
