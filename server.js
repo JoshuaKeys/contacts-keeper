@@ -1,4 +1,5 @@
 const express = require('express');
+const connectDB = require('./db/db');
 const app = express();
 
 const PORT = process.env.PORT || 5000;
@@ -6,6 +7,9 @@ const PORT = process.env.PORT || 5000;
 app.get('/', (req, res) =>
   res.json({ msg: 'Welcome to the ContactsKeeper API...' })
 );
+
+// Initialize Database
+connectDB();
 
 // Define Routes
 app.use('/api/users', require('./routes/api/users'));
